@@ -4,6 +4,8 @@
 
 ## Install Dependencies
 
+
+
 open folder redis ---> then go to 64bit/32bit --->
 ```
 run redis-server.exe and run it background while working
