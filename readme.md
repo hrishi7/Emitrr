@@ -2,10 +2,6 @@
 
 > Backend API for METAR format weather data application
 
-## Usage
-
-Rename "config/config.env.env" to "config/config.env" and update the values/settings to your own
-
 ## Install Dependencies
 
 open folder redis ---> then go to 64bit/32bit --->
