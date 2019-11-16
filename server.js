@@ -74,13 +74,13 @@ let x = await windDirection(data.wind.direction);
 
 async function getData(res,stationCode){
     //cretating atemp file to store the response of the request
-    const file = fs.createWriteStream(`./_data/${stationCode}.txt`);
+    const file = fs.createWriteStream(`./data/${stationCode}.txt`);
 
     https.get(`https://tgftp.nws.noaa.gov/data/observations/metar/stations/${stationCode}.TXT`, response => {
     var stream = response.pipe(file);
     stream.on("finish", function() {
         // First I want to read the file
-        fs.readFile(`./_data/${stationCode}.txt`, 'utf-8', function read(err, data) {
+        fs.readFile(`./data/${stationCode}.txt`, 'utf-8', function read(err, data) {
             if (err) {
                 throw err;
             }
@@ -89,7 +89,7 @@ async function getData(res,stationCode){
              // Set data to Redis
             client.setex(stationCode, 300, JSON.stringify(parsed));
             //delete the temp txt file
-            fs.unlinkSync(`./_data/${stationCode}.txt`);
+            fs.unlinkSync(`./data/${stationCode}.txt`);
             // call another function to recontruct the response object as needed
             setResponse(res,parsed);
 
